@@ -2,6 +2,8 @@ const hiddenBaner =document.querySelector("#baniere");
 
 const emailInputRef =document.querySelector("#email");
 const passwordInputRef = document.querySelector("#password");
+const firstIdentifier = "sophie.bluel@test.tld";
+const lastIdentifier = "S0phie";
 
 
 // const enteredEmail =emailInputRef.current.value;
@@ -40,6 +42,7 @@ formLogin.addEventListener('submit', function (e) {
         email: "sophie.bluel@test.tld",
         password: "S0phie"
     }
+    const tokenId = window.localStorage.setItem ("data",JSON.stringify(userIdentifiers))
     const payload = JSON.stringify(User)
     fetch(Url, {
         method: "POST",
@@ -47,9 +50,9 @@ formLogin.addEventListener('submit', function (e) {
         body: payload
     }).then((res) => res.json()).then((data) => redirection(data))
 
-    if (JSON.stringify(User) === JSON.stringify(userIdentifiers)) {
+    if (JSON.stringify(User) === JSON.stringify(userIdentifiers), tokenId !== null) {
         window.location = "./index.html";
-        document.querySelector('#baniere').classList.remove('hidden')
+        window.localStorage.removeItem("data")
 
     } else if (emailOfUser !== firstIdentifier) {
         document.querySelector("#message").classList.add('warning')
