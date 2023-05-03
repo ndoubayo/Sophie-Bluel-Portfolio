@@ -2,7 +2,7 @@
 
 const urlTravaux = await fetch("http://localhost:5678/api/works");
 const works = await urlTravaux.json();
-
+console.log(works);
 
 // Création des elements du DOM et ajout des travaux à la galerie
 function generationTravaux(works){
@@ -37,6 +37,7 @@ btnTous.addEventListener("click", function(){
     const tous = works.filter(function(work){
         return work
     })
+    console.log(tous)
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(tous)
 })
@@ -46,6 +47,7 @@ btnObjet.addEventListener("click", function(){
         return work.categoryId===1;
         
     });
+    console.log(objets);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(objets)
 })
@@ -55,6 +57,7 @@ btnAppartement.addEventListener("click", function(){
         return work.categoryId===2;
         
     });
+    console.log(appartements);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(appartements)
 })
@@ -64,9 +67,25 @@ btnHotelRestaurant.addEventListener("click", function(){
         return work.categoryId===3;
         
     });
-  
+    console.log(hotelRestaurants);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(hotelRestaurants)
 })
+
+//Gestion des donnés de login
+
+const  dataExist = window.sessionStorage.getItem("data");
+const hiddenBaner =document.querySelector("#baniere");
+const hiddenModif1 =document.querySelector("#modif1")
+const hiddenModif2 =document.querySelector("#modif2")
+
+if(dataExist){
+    hiddenBaner.classList.remove('hidden');
+    hiddenBaner.classList.add('baniere-modification')
+    hiddenModif1.classList.remove('hidden')
+    hiddenModif1.classList.add('modifier')
+    hiddenModif2.classList.remove('hidden')
+    hiddenModif2.classList.add('modifier')
+}
 
 
