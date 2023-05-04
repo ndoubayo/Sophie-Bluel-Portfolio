@@ -72,20 +72,31 @@ btnHotelRestaurant.addEventListener("click", function(){
     generationTravaux(hotelRestaurants)
 })
 
-//Gestion des donnés de login
+//Gestion des donné de login
 
 const  dataExist = window.sessionStorage.getItem("data");
 const hiddenBaner =document.querySelector("#baniere");
-const hiddenModif1 =document.querySelector("#modif1")
-const hiddenModif2 =document.querySelector("#modif2")
+const hiddenModif1 =document.querySelector("#modif1");  
+const hiddenModif2 =document.querySelector("#modif2");
+const hiddenBtn = document.querySelector(".btncontainer")
 
 if(dataExist){
     hiddenBaner.classList.remove('hidden');
-    hiddenBaner.classList.add('baniere-modification')
-    hiddenModif1.classList.remove('hidden')
-    hiddenModif1.classList.add('modifier')
-    hiddenModif2.classList.remove('hidden')
-    hiddenModif2.classList.add('modifier')
+    hiddenBaner.classList.add('baniere-modification');
+    hiddenModif1.classList.remove('hidden');
+    hiddenModif1.classList.add('modifier');
+    hiddenModif2.classList.remove('hidden');
+    hiddenModif2.classList.add('modifier');
+    hiddenBtn.classList.remove('btncontainer');
+    hiddenBtn.classList.add("hidden")
+     
+
+    const logout = document.querySelector('#login')
+    logout.innerText = "logout";
+    logout.addEventListener("click", function(){
+        window.sessionStorage.removeItem("data");
+        window.location = "./login.html"
+    })
 }
 
 

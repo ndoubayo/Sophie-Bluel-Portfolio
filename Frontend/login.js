@@ -42,17 +42,16 @@ formLogin.addEventListener('submit', function (e) {
         email: "sophie.bluel@test.tld",
         password: "S0phie"
     }
-    const tokenId = window.localStorage.setItem ("data",JSON.stringify(userIdentifiers))
+    const tokenId = window.sessionStorage.setItem ("data",JSON.stringify(userIdentifiers))
     const payload = JSON.stringify(User)
     fetch(Url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: payload
-    }).then((res) => res.json()).then((data) => redirection(data))
+    }).then((res) => res.json())
 
     if (JSON.stringify(User) === JSON.stringify(userIdentifiers), tokenId !== null) {
         window.location = "./index.html";
-        window.localStorage.removeItem("data")
 
     } else if (emailOfUser !== firstIdentifier) {
         document.querySelector("#message").classList.add('warning')
