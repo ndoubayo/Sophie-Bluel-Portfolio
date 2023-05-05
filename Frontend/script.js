@@ -99,4 +99,30 @@ if(dataExist){
     })
 }
 
+// Mise en forme et manipulation de la modale
+
+
+function genererGallerieModal(works){
+
+    for (let i = 0; i < works.length; i++){
+       const travaux = works[i];
+       // Les elements qui accueilleront les travaux
+       const galerie = document.querySelector(".gallery-modal");
+       const figure = document.createElement("figure");
+   
+       const imageElement = document.createElement("img");
+       imageElement.src = travaux.imageUrl;
+       imageElement.alt = travaux.title;
+       const titleElement = document.createElement("figcaption");
+       titleElement.innerText = "éditer";
+   
+       //Rattachemment
+       figure.appendChild(imageElement);
+       figure.appendChild(titleElement)
+   
+       galerie.appendChild(figure)
+    }
+   }
+   
+   genererGallerieModal(works);
 

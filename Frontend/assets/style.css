@@ -95,8 +95,11 @@ section {
 
 .modal-container{
 	position: fixed;
-	top: 0;
-	height: 100vh;
+    inset: 0;
+    height: 100vh;
+    z-index: 3;
+    display: grid;
+    place-items: center;
 }
 .overlay{
 	position: absolute;
@@ -105,6 +108,86 @@ section {
 	background: rgba(0, 0, 0, 0.8);
 
 }
+.modal{
+  z-index: 1; /* Sit on top */ 
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white; /* Fallback color */
+  z-index: 3;
+  border-radius: 10px;
+}
+.modal-content {
+	background-color: #fefefe;
+	margin: 10px;
+}
+.close-title{
+	display: flex;
+	flex-direction: column;
+}
+.close-container{
+	display: flex;
+	justify-content: flex-end;
+}
+.title-container{
+	display: flex;
+	justify-content: center;
+}
+.close {
+	color: black;
+	border: none;
+	background-color: inherit;
+	font-weight: bold;
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+.gallery-modal{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	padding: 2rem 4rem;
+	gap: 10px;
+	border-bottom: 3px solid gray;
+	margin-bottom: 3rem;
+}
+.gallery-modal figure img{
+    width: 100px;
+}
+
+.btn-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+.add-photo{
+	border-radius: 20px;
+	background-color: #1D6154;
+	color: white;
+	width: 35%;
+	border: none;
+	margin: auto;
+	font-size: 14px;
+	padding: .7rem 0;
+}
+.delete-gal{
+	background-color: inherit;
+	color: red;
+	border: none;
+	font-size: 14px;
+	width: 35%;
+}
+/*.close-modal{
+	background-color: rgb(223, 57, 57);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 5px;
+	border: none;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	color: white;
+	font-size: 1.3rem;
+}*/
 
 h1{
 	display: flex;
