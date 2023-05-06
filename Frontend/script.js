@@ -126,3 +126,13 @@ function genererGallerieModal(works){
    
    genererGallerieModal(works);
 
+const btnModifier = document.querySelector("#modif2");
+const modalContainer =document.querySelector("#modal-container");
+const closeBtn = document.querySelector('#close')
+btnModifier.addEventListener("mousedown", function (){
+      modalContainer.classList.add("modal-container")
+})
+closeBtn.addEventListener("click", function (){
+    modalContainer.classList.remove("modal-container")
+})
+

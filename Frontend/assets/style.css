@@ -108,6 +108,10 @@ section {
 	background: rgba(0, 0, 0, 0.8);
 
 }
+#modif2, #modif1{
+	cursor: pointer;
+	font-size: 1rem;
+}
 .modal{
   z-index: 1; /* Sit on top */ 
   overflow: auto; /* Enable scroll if needed */
