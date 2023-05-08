@@ -29,8 +29,6 @@ function generationTravaux(works){
 
 generationTravaux(works);
 
-
-
 //Création de boutons de filtrages
 const btnTous = document.querySelector('.tous');
 btnTous.addEventListener("click", function(){
@@ -115,11 +113,14 @@ function genererGallerieModal(works){
        imageElement.alt = travaux.title;
        const titleElement = document.createElement("figcaption");
        titleElement.innerText = "éditer";
+       const deleteIcone = document.createElement("i");
+       deleteIcone.classList.add("fa-solid","fa-trash-can")
    
        //Rattachemment
        figure.appendChild(imageElement);
-       figure.appendChild(titleElement)
-   
+       figure.appendChild(titleElement);
+       figure.appendChild(deleteIcone);
+
        galerie.appendChild(figure)
     }
    }

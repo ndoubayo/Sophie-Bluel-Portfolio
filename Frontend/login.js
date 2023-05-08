@@ -50,9 +50,9 @@ formLogin.addEventListener('submit', function (e) {
         body: payload
     }).then((res) => res.json())
 
-    if (JSON.stringify(User) === JSON.stringify(userIdentifiers), tokenId !== null) {
+    if (JSON.stringify(User) === JSON.stringify(userIdentifiers)) {
         window.location = "./index.html";
-
+        console.log("Salut")
     } else if (emailOfUser !== firstIdentifier) {
         document.querySelector("#message").classList.add('warning')
     } else if (passwordOfUser !== lastIdentifier) {
