@@ -15,27 +15,18 @@
 </head>
 <body>
 	<!-- Modal insertion -->
-	<div class="hidden" id="modal-container"> <!-- modal-container -->
-		<div class="overlay modal-trigger"></div>
-		<div id="myModal" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="close-title">
-					<div class="close-container">
-						<button id="close" class="close">&times;</button>
-					</div>
-					<div class="title-container">
-						<h2>Galerie photos</h2>
-					</div>
-				</div>
-				<div class="gallery-modal" id="gallery-modal"></div>
-				<div class="btn-container">
-					<button class="add-photo">Ajouter une photo</button>
-					<button class="delete-gal">Supprimmer la galerie</button>
-				</div>
+	<aside class="hidden" id="modal1" aria-hidden="true" role="dialog" aria-labelledby="title-modal">
+		<!-- modal-container -->
+		<div id="myModal" class="modal-wrapper">
+			<button id="close" class="close">&times;</button>
+			<h2 id="title-modal">Galerie photos</h2>
+			<div class="gallery-modal" id="gallery-modal"></div>
+			<div class="btn-container">
+				<button class="add-photo">Ajouter une photo</button>
+				<button class="delete-gal">Supprimmer la galerie</button>
 			</div>
 		</div>
-	</div>
+	</aside>
 	<div id="baniere" class="hidden"><!--baniere-modification-->
 		<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 		<p>Mode édition</p>
@@ -58,8 +49,10 @@
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
 			<figcaption id="modif1" class="hidden"><!--modifier-->
-				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
-				<p>modifier</p>
+				<a href="#madal1" id="modif1" class="js_modal"><!--modifier-->
+					<i class="fa-sharp fa-regular fa-pen-to-square"></i>
+					<p>modifier</p>
+				</a href="#madal1">
 			</figcaption>
 		</figure>
 		<article>
@@ -76,10 +69,10 @@
 	<section id="portfolio">
 		<div class="projet-modifier">
 			<h2>Mes Projets</h2>
-			<div id="modif2" class="hidden"><!--modifier-->
+			<a href="#madal1" id="modif2" class="js_modal"><!--modifier-->
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 				<p>modifier</p>
-			</div>
+			</a href="#madal1">
 		</div>
 		<div class="btncontainer">
 			<button class="tous">Tous</button>

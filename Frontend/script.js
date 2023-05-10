@@ -98,6 +98,37 @@ if(dataExist){
 }
 
 // Mise en forme et manipulation de la modale
+ let modal = null;
+const ouvrirModale = function(e){
+    e.preventDefault()
+    const modalStyle = document.querySelector('#modal1')
+    modalStyle.classList.add('modal')
+    modalStyle.addEventListener('click', closeMoadal)
+}
+document.querySelectorAll('.js_modal').forEach(a =>{
+    a.addEventListener('click', ouvrirModale)
+})
+
+const closeMoadal = function(e){
+    e.preventDefault()
+    const modalStyle = document.querySelector('#modal1')
+    modalStyle.classList.remove('modal')
+}
+const btnFermerModal = document.querySelector('#close')
+btnFermerModal.addEventListener('click', closeMoadal)
+
+const stope = document.querySelector('#myModal')
+stope.addEventListener('click', function(e){
+    e.stopPropagation()
+})
+
+window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'|| e.key === 'Esc'){
+        closeMoadal(e)
+    }
+})
+
+
 
 
 function genererGallerieModal(works){
@@ -129,7 +160,7 @@ function genererGallerieModal(works){
    
 genererGallerieModal(works);
 
-const btnModifier = document.querySelector("#modif2");
+/*const btnModifier = document.querySelector("#modif2");
 const modalContainer =document.querySelector("#modal-container");
 const closeBtn = document.querySelector('#close')
 btnModifier.addEventListener("mousedown", function (){
@@ -137,7 +168,10 @@ btnModifier.addEventListener("mousedown", function (){
 })
 closeBtn.addEventListener("click", function (){
     modalContainer.classList.remove("modal-container")
-})
+})*/
+
+
+
 
 // Suppression d'une image de la galerie modale et de la base de données
 const galerieModal = document.querySelector(".gallery-modal");

@@ -73,6 +73,9 @@ body {
 .hidden{
 	display: none;
 }
+figcaption a {
+	display: flex;
+}
 /*Partie inputs login*/
 .warning{
 	color: red;
@@ -91,65 +94,54 @@ section {
 	margin: 50px 0
 }
 
+
 /*Gestion de la modale*/
 
-.modal-container{
-	position: fixed;
-    inset: 0;
-    height: 100vh;
-    z-index: 3;
-    display: grid;
-    place-items: center;
-}
-.overlay{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-
-}
-#modif2, #modif1{
-	cursor: pointer;
-	font-size: 1rem;
-}
 .modal{
-  z-index: 1; /* Sit on top */ 
-  overflow: auto; /* Enable scroll if needed */
-  background-color: white; /* Fallback color */
-  z-index: 3;
-  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  display: grid;
+  place-items: center;
 }
-.modal-content {
+.modal-wrapper {
 	background-color: #fefefe;
-	margin: 10px;
+	width: 650px;
+	padding: 20px;
+	position: relative;
+	border-radius: 15px;
+	max-width: calc(100vw, -20px);
 }
-.close-title{
-	display: flex;
-	flex-direction: column;
-}
-.close-container{
-	display: flex;
-	justify-content: flex-end;
-}
-.title-container{
-	display: flex;
-	justify-content: center;
-}
+
 .close {
 	color: black;
-	border: none;
-	background-color: inherit;
-	font-weight: bold;
-	font-size: 1.2rem;
-	cursor: pointer;
+    border: none;
+    background-color: inherit;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    float: right;
+    position: absolute;
+    right: 28px;
+	font-size: 2rem;
 }
 .gallery-modal{
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	padding: 2rem 4rem;
 	gap: 10px;
 	border-bottom: 3px solid gray;
-	margin-bottom: 3rem;
+	margin: auto;
+	width: 85%;
+	padding-bottom: 3rem;
+}
+#title-modal{
+	text-align: center;
+    margin: 2rem 0;
+    color: black;
+    font-family: inherit;
 }
 .gallery-modal figure img{
     width: 100px;
@@ -174,7 +166,7 @@ section {
 	align-items: center;
 	flex-direction: column;
 	gap: 2rem;
-	margin-bottom: 3rem;
+	margin-top: 2rem;
 }
 .add-photo{
 	border-radius: 20px;
@@ -193,18 +185,6 @@ section {
 	font-size: 14px;
 	width: 35%;
 }
-/*.close-modal{
-	background-color: rgb(223, 57, 57);
-	width: 2rem;
-	height: 2rem;
-	border-radius: 5px;
-	border: none;
-	position: absolute;
-	right: 5px;
-	top: 5px;
-	color: white;
-	font-size: 1.3rem;
-}*/
 
 h1{
 	display: flex;
