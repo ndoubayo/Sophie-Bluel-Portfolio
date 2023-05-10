@@ -48,12 +48,13 @@ formLogin.addEventListener('submit', function (e) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: payload
-    }).then((res) => res.json())
+    }).then((res) => res.json()).then((data) =>window.localStorage.setItem("token", data.token))
 
     if (JSON.stringify(User) === JSON.stringify(userIdentifiers)) {
+       
         window.location = "./index.html";
-        console.log("Salut")
-    } else if (emailOfUser !== firstIdentifier) {
+       console.log('Salut')
+    }else if (emailOfUser !== firstIdentifier) {
         document.querySelector("#message").classList.add('warning')
     } else if (passwordOfUser !== lastIdentifier) {
         document.querySelector("#message2").classList.add('warning')

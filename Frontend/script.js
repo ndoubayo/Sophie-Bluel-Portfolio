@@ -70,7 +70,7 @@ btnHotelRestaurant.addEventListener("click", function(){
     generationTravaux(hotelRestaurants)
 })
 
-//Gestion des donné de login
+//Gestion des donnés de login
 
 const  dataExist = window.sessionStorage.getItem("data");
 const hiddenBaner =document.querySelector("#baniere");
@@ -105,8 +105,9 @@ function genererGallerieModal(works){
     for (let i = 0; i < works.length; i++){
        const travaux = works[i];
        // Les elements qui accueilleront les travaux
-       const galerie = document.querySelector(".gallery-modal");
+       const galerieModal = document.querySelector(".gallery-modal");
        const figure = document.createElement("figure");
+       figure.setAttribute("id", travaux.id)
    
        const imageElement = document.createElement("img");
        imageElement.src = travaux.imageUrl;
@@ -121,19 +122,55 @@ function genererGallerieModal(works){
        figure.appendChild(titleElement);
        figure.appendChild(deleteIcone);
 
-       galerie.appendChild(figure)
+
+       galerieModal.appendChild(figure)
     }
-   }
+}
    
-   genererGallerieModal(works);
+genererGallerieModal(works);
 
 const btnModifier = document.querySelector("#modif2");
 const modalContainer =document.querySelector("#modal-container");
 const closeBtn = document.querySelector('#close')
 btnModifier.addEventListener("mousedown", function (){
-      modalContainer.classList.add("modal-container")
+    modalContainer.classList.add("modal-container")
 })
 closeBtn.addEventListener("click", function (){
     modalContainer.classList.remove("modal-container")
 })
+
+// Suppression d'une image de la galerie modale et de la base de données
+const galerieModal = document.querySelector(".gallery-modal");
+
+galerieModal.addEventListener('click', function(e){
+    // Verifier si l'element cliqué est une icone "Delete"
+    if(e.target.classList.contains('fa-trash-can')){
+        // Recupereation de l'element figure, parent correspondant
+        const figure = e.target.closest('figure');
+        // Récuperation de l'ID de l'element figure à supprimer
+        const workId = figure.getAttribute('id');
+        console.log(workId)
+        const getTokent = window.localStorage.getItem('token')
+        // Envie d'une requete DELETE pour supprimer l'element 
+        fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: 'DELETE',
+            headers: {"Authorization": `Bearer ${getTokent}`}
+        }).then(function(res){
+            if(res.ok){
+                //Affiche les projets de la gallerie modale
+                generationTravaux()
+                //Affiche les projets de la gallerie modale de le page d'accueil
+                genererGallerieModal()
+            }else{
+                console.error("Erreur survenue lors de la suppression de l\'element")
+            }
+        }).catch(function(error){
+            console.error("Erreur survenue lors de la suppression de l\'element", error)
+        })
+    }
+})
+/*const getTokent = window.localStorage.getItem('token')
+console.log(getTokent)*/
+
+
 
