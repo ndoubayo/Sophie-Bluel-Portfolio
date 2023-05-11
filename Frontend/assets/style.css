@@ -106,6 +106,7 @@ section {
   background: rgba(0,0,0,0.7);
   display: grid;
   place-items: center;
+  overflow: auto;
 }
 .modal-wrapper {
 	background-color: #fefefe;
@@ -137,7 +138,7 @@ section {
 	width: 85%;
 	padding-bottom: 3rem;
 }
-#title-modal{
+#title-modal, #title-add-photo{
 	text-align: center;
     margin: 2rem 0;
     color: black;
@@ -177,6 +178,7 @@ section {
 	margin: auto;
 	font-size: 14px;
 	padding: .7rem 0;
+	cursor: pointer;
 }
 .delete-gal{
 	background-color: inherit;
@@ -184,7 +186,64 @@ section {
 	border: none;
 	font-size: 14px;
 	width: 35%;
+	cursor: pointer;
 }
+/*modal add*/
+.back{
+	cursor: pointer;
+	font-size: 2rem;
+	border: none;
+	background-color: inherit;
+}
+.container-photo{
+	background: #E8F1F7;
+	border-radius: 5px;
+	padding: 2rem;
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+	width: 75%;
+}
+.container-photo .icone-photo{
+	font-size: 5rem;
+	color:  #B9C5CC;
+}
+.container-photo .btn-ajout-photo, .btn-valider{
+	background-color: #B9C5CC;
+	font-size: 1.54rem;
+	padding: .5rem 2.5rem;
+	border: none;
+	border-radius: 20px;
+	color:#306685;
+}
+.container-inputs{
+	width: 85%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 2px solid gray
+}
+.inputs-text{
+	height: 50px;
+	border: none;
+	box-shadow: 0 0 50px rgb(212, 209, 209);
+}
+.container-btn-valider{
+	display: grid;
+	place-items: center;
+	margin-top: 2rem;
+}
+.btn-valider{
+	color: #ffffff;
+	background-color:  #A7A7A7;
+	padding: .5rem 5rem;
+}
+
 
 h1{
 	display: flex;

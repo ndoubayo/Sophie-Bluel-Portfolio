@@ -93,12 +93,12 @@ if(dataExist){
     logout.innerText = "logout";
     logout.addEventListener("click", function(){
         window.sessionStorage.removeItem("data");
+        window.sessionStorage.removeItem('token')
         window.location = "./login.html"
     })
 }
 
 // Mise en forme et manipulation de la modale
- let modal = null;
 const ouvrirModale = function(e){
     e.preventDefault()
     const modalStyle = document.querySelector('#modal1')
@@ -128,8 +128,29 @@ window.addEventListener('keydown', function(e){
     }
 })
 
+const openAddphoto = function(e){
+    e.preventDefault()
+    const principelModal = document.querySelector('#myModal')
+    principelModal.classList.add('hidden')
+    const modalAddStyle = document.querySelector('#modalphoto')
+    modalAddStyle.classList.remove('hidden')
+   
+}
+document.querySelector('#add-photo').addEventListener('click', openAddphoto)
 
-
+const backToprincipalModal = function(e){
+    e.preventDefault()
+    const principelModal = document.querySelector('#myModal')
+    principelModal.classList.remove('hidden')
+    const modalAddStyle = document.querySelector('#modalphoto')
+    modalAddStyle.classList.add('hidden')
+   
+}
+document.querySelector('#back').addEventListener('click', backToprincipalModal)
+const stopAtAddphoto = document.querySelector('#modalphoto')
+stopAtAddphoto.addEventListener('click', function(e){
+    e.stopPropagation()
+})
 
 function genererGallerieModal(works){
 
