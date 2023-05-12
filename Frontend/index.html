@@ -27,20 +27,27 @@
 			</div>
 		</div>
 		<div class="modal-wrapper hidden" id="modalphoto">
-			<form action="submit" method="post">
+			<form action="submit" method="post" id="form-to-submit">
 				<button id="back" class="back">&#8592;</button>
 				<button id="close" class="close">&times;</button>
 				<h2 id="title-add-photo">Ajout photo</h2>
 				<div class="container-photo">
-					<div class="icone-photo"><i class="fa-sharp fa-solid fa-image"></i></div>
-					<button class="btn-ajout-photo">+ Ajout photo</button>
+					<i class="fa-sharp fa-solid fa-image"></i>
+					<img src="./assets/images/villa-ferneze.png" alt="image" class="hidden" id="project-pic">
+					<label for="input-file" class="btn-ajout-photo" id="btn-ajout-photo">+ Ajout photo</label>
+					<input type="file" id="input-file" name="input-file" accept="image/jpg, image/png" class="hidden">
 					<div class="formats">jpg, png: 4mo max</div>
 				</div>
 				<div class="container-inputs">
 					<label for="titre">Titre</label><br>
 					<input class="inputs-text" type="text" name="titre" id="titre"><br>
 					<label for="Categorie">Categorie</label><br>
-					<input class="inputs-text" type="text" name="Categorie" id="Categorie"><br>
+					<select class="inputs-text" name="Categorie" id="Categorie">
+						<option value="vide"></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hôtels et Restaurants</option>
+					</select><br>
 				</div>
 				<div class="container-btn-valider">
 					<button class="btn-valider" type="submit">Valider</button>
@@ -90,7 +97,7 @@
 	<section id="portfolio">
 		<div class="projet-modifier">
 			<h2>Mes Projets</h2>
-			<a href="#madal1" id="modif2" class="js_modal"><!--modifier-->
+			<a href="#madal1" id="modif2" class="js_modal hidden"><!--modifier-->
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a href="#madal1">

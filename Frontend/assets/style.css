@@ -206,8 +206,9 @@ section {
 	flex-direction: column;
 	margin: auto;
 	width: 75%;
+	position: relative;
 }
-.container-photo .icone-photo{
+.fa-image{
 	font-size: 5rem;
 	color:  #B9C5CC;
 }
@@ -242,6 +243,12 @@ section {
 	color: #ffffff;
 	background-color:  #A7A7A7;
 	padding: .5rem 5rem;
+}
+#project-pic{
+	height: 100%;
+	width: 50%;
+	z-index: 3;
+	position: absolute;
 }
 
 

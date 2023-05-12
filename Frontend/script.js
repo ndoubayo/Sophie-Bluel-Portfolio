@@ -152,6 +152,58 @@ stopAtAddphoto.addEventListener('click', function(e){
     e.stopPropagation()
 })
 
+
+
+
+const formToSubmit = document.querySelector('#form-to-submit')
+let titleToAdd = document.querySelector('#titre').value
+let categoryToAdd = document.querySelector('#Categorie').value
+let imageToSend = document.querySelector("#project-pic")
+let inputFile = document.querySelector("#input-file")
+formToSubmit.addEventListener('submit', async function (e) {
+    e.preventDefault()
+    let imageToSend = document.querySelector("#project-pic")
+    let inputFile = document.querySelector("#input-file")
+
+    inputFile.onchange = function () {
+        imageToSend.src = URL.createObjectURL(inputFile.files[0])
+    }
+    // Création d'objets formData
+
+    var formData = new FormData();
+    let titleToAdd = document.querySelector('#titre').value
+    let categoryToAdd = document.querySelector('#Categorie').value
+
+    formData.append("image", inputFile.files[0]);
+    formData.append("title", titleToAdd);
+    formData.append("category", categoryToAdd);
+
+    console.log(formData)
+
+    const getTokent = window.sessionStorage.getItem('token')
+    const answer = await fetch('http://localhost:5678/api/works/', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${getTokent}` },
+        body: formData
+    }).then((res) => res.json())
+    .catch((error) => alert("Erreur lors de l\envoi du formulaire" + error))
+
+})
+
+const btnAddPhoto = document.querySelector("#btn-ajout-photo")
+btnAddPhoto.addEventListener('click', function(e){
+    const imageAdd = document.querySelector('#project-pic')
+    imageAdd.classList.remove("hidden")
+})
+
+
+/*const btnAddPhoto = document.querySelector("#btn-ajout-photo")
+btnAddPhoto.addEventListener('click', function(e){
+    e.preventDefault()
+    const imageAdd = document.querySelector('#project-pic')
+    imageAdd.classList.remove("hidden")
+})*/
+
 function genererGallerieModal(works){
 
     for (let i = 0; i < works.length; i++){
@@ -181,19 +233,6 @@ function genererGallerieModal(works){
    
 genererGallerieModal(works);
 
-/*const btnModifier = document.querySelector("#modif2");
-const modalContainer =document.querySelector("#modal-container");
-const closeBtn = document.querySelector('#close')
-btnModifier.addEventListener("mousedown", function (){
-    modalContainer.classList.add("modal-container")
-})
-closeBtn.addEventListener("click", function (){
-    modalContainer.classList.remove("modal-container")
-})*/
-
-
-
-
 // Suppression d'une image de la galerie modale et de la base de données
 const galerieModal = document.querySelector(".gallery-modal");
 
@@ -205,7 +244,7 @@ galerieModal.addEventListener('click', function(e){
         // Récuperation de l'ID de l'element figure à supprimer
         const workId = figure.getAttribute('id');
         console.log(workId)
-        const getTokent = window.localStorage.getItem('token')
+        const getTokent = window.sessionStorage.getItem('token')
         // Envie d'une requete DELETE pour supprimer l'element 
         fetch(`http://localhost:5678/api/works/${workId}`, {
             method: 'DELETE',
