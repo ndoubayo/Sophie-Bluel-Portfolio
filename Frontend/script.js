@@ -2,7 +2,6 @@
 
 const urlTravaux = await fetch("http://localhost:5678/api/works");
 const works = await urlTravaux.json();
-console.log(works);
 
 // Création des elements du DOM et ajout des travaux à la galerie
 function generationTravaux(works){
@@ -72,7 +71,7 @@ btnHotelRestaurant.addEventListener("click", function(){
 
 //Gestion des donnés de login
 
-const  dataExist = window.sessionStorage.getItem("data");
+const  dataExist = window.sessionStorage.getItem("token");
 const hiddenBaner =document.querySelector("#baniere");
 const hiddenModif1 =document.querySelector("#modif1");  
 const hiddenModif2 =document.querySelector("#modif2");
@@ -114,8 +113,10 @@ const closeMoadal = function(e){
     const modalStyle = document.querySelector('#modal1')
     modalStyle.classList.remove('modal')
 }
-const btnFermerModal = document.querySelector('#close')
-btnFermerModal.addEventListener('click', closeMoadal)
+document.querySelectorAll('.close').forEach(button => {
+    button.addEventListener('click', closeMoadal)
+})
+
 
 const stope = document.querySelector('#myModal')
 stope.addEventListener('click', function(e){
@@ -153,13 +154,14 @@ stopAtAddphoto.addEventListener('click', function(e){
 })
 
 
-
-
 const formToSubmit = document.querySelector('#form-to-submit')
 let titleToAdd = document.querySelector('#titre').value
 let categoryToAdd = document.querySelector('#Categorie').value
 let imageToSend = document.querySelector("#project-pic")
 let inputFile = document.querySelector("#input-file")
+inputFile.onchange = function () {
+    imageToSend.src = URL.createObjectURL(inputFile.files[0])
+}
 formToSubmit.addEventListener('submit', async function (e) {
     e.preventDefault()
     let imageToSend = document.querySelector("#project-pic")
@@ -195,15 +197,7 @@ btnAddPhoto.addEventListener('click', function(e){
     const imageAdd = document.querySelector('#project-pic')
     imageAdd.classList.remove("hidden")
 })
-
-
-/*const btnAddPhoto = document.querySelector("#btn-ajout-photo")
-btnAddPhoto.addEventListener('click', function(e){
-    e.preventDefault()
-    const imageAdd = document.querySelector('#project-pic')
-    imageAdd.classList.remove("hidden")
-})*/
-
+//Genération des travaux dans la modale
 function genererGallerieModal(works){
 
     for (let i = 0; i < works.length; i++){

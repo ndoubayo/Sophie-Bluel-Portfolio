@@ -6,25 +6,10 @@ const firstIdentifier = "sophie.bluel@test.tld";
 const lastIdentifier = "S0phie";
 
 
-// const enteredEmail =emailInputRef.current.value;
-// const enteredPassword = passwordInputRef.current.value;
-
-/* controle des champs de saisie vide*/
-
-const checkEmptyInputs = () => {
-    if (
-        enteredEmail.trim().length === 0 ||
-        enteredPassword.trim().length === 0
-    ) {
-        setError({
-            title: "Champ(s) de saisie vide(s)",
-            message: "Svp entrez votre mail/mot de pass"
-        })
-    }
-}
+const enteredEmail =emailInputRef.value;
+const enteredPassword = passwordInputRef.value;
 
 const Url = "http://localhost:5678/api/users/login";
-
 
 const formLogin = document.querySelector("#formLogin");
 formLogin.addEventListener('submit', function (e) {
@@ -38,11 +23,6 @@ formLogin.addEventListener('submit', function (e) {
 
     const firstIdentifier = "sophie.bluel@test.tld";
     const lastIdentifier = "S0phie";
-    const userIdentifiers = {
-        email: "sophie.bluel@test.tld",
-        password: "S0phie"
-    }
-    const tokenId = window.sessionStorage.setItem ("data",JSON.stringify(userIdentifiers))
     const payload = JSON.stringify(User)
     fetch(Url, {
         method: "POST",
@@ -51,6 +31,11 @@ formLogin.addEventListener('submit', function (e) {
     }).then(function(res){
         if (res.ok){
             window.location = "./index.html";
+        }else if (
+            enteredEmail.trim().length === 0 ||
+            enteredPassword.trim().length === 0
+        ){
+           alert("S'il vous plais entrez un email et/ou un mot de pass")
         }else if (emailOfUser !== firstIdentifier) {
             document.querySelector("#message").classList.add('warning')
         } else if (passwordOfUser !== lastIdentifier) {
