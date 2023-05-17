@@ -34,7 +34,6 @@ btnTous.addEventListener("click", function(){
     const tous = works.filter(function(work){
         return work
     })
-    console.log(tous)
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(tous)
 })
@@ -44,7 +43,6 @@ btnObjet.addEventListener("click", function(){
         return work.categoryId===1;
         
     });
-    console.log(objets);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(objets)
 })
@@ -54,7 +52,6 @@ btnAppartement.addEventListener("click", function(){
         return work.categoryId===2;
         
     });
-    console.log(appartements);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(appartements)
 })
@@ -64,7 +61,6 @@ btnHotelRestaurant.addEventListener("click", function(){
         return work.categoryId===3;
         
     });
-    console.log(hotelRestaurants);
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(hotelRestaurants)
 })
@@ -75,6 +71,7 @@ const  dataExist = window.sessionStorage.getItem("token");
 const hiddenBaner =document.querySelector("#baniere");
 const hiddenModif1 =document.querySelector("#modif1");  
 const hiddenModif2 =document.querySelector("#modif2");
+const hiddenModif3 =document.querySelector("#modif3");
 const hiddenBtn = document.querySelector(".btncontainer")
 
 if(dataExist){
@@ -84,6 +81,8 @@ if(dataExist){
     hiddenModif1.classList.add('modifier');
     hiddenModif2.classList.remove('hidden');
     hiddenModif2.classList.add('modifier');
+    hiddenModif3.classList.remove('hidden');
+    hiddenModif3.classList.add('modifier');
     hiddenBtn.classList.remove('btncontainer');
     hiddenBtn.classList.add("hidden")
      
@@ -145,7 +144,6 @@ const backToprincipalModal = function(e){
     principelModal.classList.remove('hidden')
     const modalAddStyle = document.querySelector('#modalphoto')
     modalAddStyle.classList.add('hidden')
-   
 }
 document.querySelector('#back').addEventListener('click', backToprincipalModal)
 const stopAtAddphoto = document.querySelector('#modalphoto')
@@ -180,8 +178,6 @@ formToSubmit.addEventListener('submit', async function (e) {
     formData.append("title", titleToAdd);
     formData.append("category", categoryToAdd);
 
-    console.log(formData)
-
     const getTokent = window.sessionStorage.getItem('token')
     const answer = await fetch('http://localhost:5678/api/works/', {
         method: 'POST',
@@ -196,6 +192,10 @@ const btnAddPhoto = document.querySelector("#btn-ajout-photo")
 btnAddPhoto.addEventListener('click', function(e){
     const imageAdd = document.querySelector('#project-pic')
     imageAdd.classList.remove("hidden")
+
+    if(titleToAdd.trim() == ""){
+        document.querySelector(".btn-valider").style.backgroundColor = "green";
+    }
 })
 //Genération des travaux dans la modale
 function genererGallerieModal(works){
@@ -220,7 +220,6 @@ function genererGallerieModal(works){
        figure.appendChild(titleElement);
        figure.appendChild(deleteIcone);
 
-
        galerieModal.appendChild(figure)
     }
 }
@@ -233,13 +232,12 @@ const galerieModal = document.querySelector(".gallery-modal");
 galerieModal.addEventListener('click', function(e){
     // Verifier si l'element cliqué est une icone "Delete"
     if(e.target.classList.contains('fa-trash-can')){
-        // Recupereation de l'element figure, parent correspondant
+        // Recuperation de l'element figure, parent correspondant
         const figure = e.target.closest('figure');
         // Récuperation de l'ID de l'element figure à supprimer
         const workId = figure.getAttribute('id');
-        console.log(workId)
         const getTokent = window.sessionStorage.getItem('token')
-        // Envie d'une requete DELETE pour supprimer l'element 
+        // Envoie d'une requete DELETE pour supprimer l'element 
         fetch(`http://localhost:5678/api/works/${workId}`, {
             method: 'DELETE',
             headers: {"Authorization": `Bearer ${getTokent}`}

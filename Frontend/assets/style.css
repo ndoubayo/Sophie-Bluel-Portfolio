@@ -76,6 +76,16 @@ body {
 figcaption a {
 	display: flex;
 }
+.modifier{
+	display: flex;
+	cursor: pointer;
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+}
+.fa-pen-to-square{
+	margin-right: .8rem;
+}
+
 /*Partie inputs login*/
 .warning{
 	color: red;
@@ -85,6 +95,7 @@ figcaption a {
 	border: 2px solid green
 }
 
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -92,6 +103,10 @@ header {
 }
 section {
 	margin: 50px 0
+}
+input + p{
+	text-align: center;
+	text-decoration: underline;
 }
 
 
@@ -110,13 +125,17 @@ section {
 }
 .modal-wrapper {
 	background-color: #fefefe;
-	width: 650px;
+	
 	padding: 20px;
 	position: relative;
 	border-radius: 15px;
-	max-width: calc(100vw, -20px);
 }
-
+@media (max-width:700px) {
+	.modal-wrapper {
+		padding: 0;
+	};
+	
+}
 .close {
 	color: black;
     border: none;
@@ -134,10 +153,10 @@ section {
 	grid-template-columns: repeat(5, 1fr);
 	gap: 10px;
 	border-bottom: 3px solid gray;
-	margin: auto;
-	width: 85%;
+	margin: 0 3rem;
 	padding-bottom: 3rem;
 }
+
 #title-modal, #title-add-photo{
 	text-align: center;
     margin: 2rem 0;
@@ -204,8 +223,8 @@ section {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin: auto;
-	width: 75%;
+	margin: 0 2rem;
+	width: 500px;
 	position: relative;
 }
 .fa-image{
@@ -221,8 +240,7 @@ section {
 	color:#306685;
 }
 .container-inputs{
-	width: 85%;
-	margin: auto;
+	margin: 0 2rem;
 	display: flex;
 	flex-direction: column;
 	margin-top: 2rem;
@@ -333,10 +351,13 @@ li:hover {
     gap: 1rem;
     align-items: baseline;
 }
-.modifier{
-	display: flex;
-}
 
+figcaption.modifier{
+	margin-top: 10px;
+}
+a.modifier{
+	margin-left: 10px;
+}
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -394,6 +415,16 @@ li:hover {
 	width: 50%;
     margin: auto;
 	font-family: 'Syne';
+}
+@media (max-width:870px) {
+	#contact{
+		width: 95%;
+	};
+}
+@media (max-width:700px) {
+	#contact{
+		width: 100%;
+	};
 }
 #contact > * {
 	text-align: center;
