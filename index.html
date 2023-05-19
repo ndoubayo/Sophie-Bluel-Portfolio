@@ -8,8 +8,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-	<script defer type="module" src="./script.js"></script>
+	<link rel="stylesheet" href="./Frontend/assets/style.css">
+	<script defer type="module" src="./Frontend/js/script.js"></script>
 	
 	<script src="https://kit.fontawesome.com/58d9213c4d.js" crossorigin="anonymous"></script>
 </head>
@@ -35,14 +35,14 @@
 					<i class="fa-sharp fa-solid fa-image"></i>
 					<img src="" alt="image" class="hidden" id="project-pic">
 					<label for="input-file" class="btn-ajout-photo" id="btn-ajout-photo">+ Ajout photo</label>
-					<input type="file" id="input-file" name="input-file" accept="image/jpg, image/png" class="hidden">
+					<input type="file" id="input-file" name="input-file" accept="image/jpg, image/png" class="hidden all-inputs">
 					<div class="formats">jpg, png: 4mo max</div>
 				</div>
 				<div class="container-inputs">
 					<label for="titre">Titre</label><br>
-					<input class="inputs-text" type="text" name="titre" id="titre"><br>
+					<input class="inputs-text all-inputs" type="text" name="titre" id="titre"><br>
 					<label for="Categorie">Categorie</label><br>
-					<select class="inputs-text" name="Categorie" id="Categorie">
+					<select class="inputs-text all-inputs" name="Categorie" id="Categorie">
 						<option value="vide"></option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
@@ -67,15 +67,15 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="./login.html" id="login">login</li></a>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><a href="/Frontend/pages/login.html" id="login">login</li></a>
+			<li><img src="/Frontend/assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>	
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="/Frontend/assets/images/sophie-bluel.png" alt="">
 			<figcaption id="modif1" class="hidden"><!--modifier-->
 				<a href="#madal1" id="modif1" class="js_modal"><!--modifier-->
 					<i class="fa-sharp fa-regular fa-pen-to-square"></i>

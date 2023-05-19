@@ -30,18 +30,13 @@ formLogin.addEventListener('submit', function (e) {
         body: payload
     }).then(function(res){
         if (res.ok){
-            window.location = "./index.html";
-        }else if (
-            enteredEmail.trim().length === 0 ||
-            enteredPassword.trim().length === 0
-        ){
-           alert("S'il vous plais entrez un email et/ou un mot de pass")
+            window.location = "/index.html";
         }else if (emailOfUser !== firstIdentifier) {
             document.querySelector("#message").classList.add('warning')
         } else if (passwordOfUser !== lastIdentifier) {
             document.querySelector("#message2").classList.add('warning')
         } else {
-            document.querySelector('#formLogin').innerHTML = "Accès Refusé"
+            alert("L\'email et/ou le mot de pass entré est invalide(s)")
         }
         
         return res.json()

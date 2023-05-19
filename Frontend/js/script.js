@@ -193,10 +193,39 @@ btnAddPhoto.addEventListener('click', function(e){
     const imageAdd = document.querySelector('#project-pic')
     imageAdd.classList.remove("hidden")
 
-    if(titleToAdd.trim() == ""){
+    if(titleToAdd.trim() != ""){
         document.querySelector(".btn-valider").style.backgroundColor = "green";
     }
 })
+console.log(titleToAdd)
+console.log(categoryToAdd)
+console.log(inputFile.value)
+
+inputFile.addEventListener("change", (e) => {
+    const nbrfile = e.target.value.length
+    if (nbrfile > 5) {
+        const inputTitle = document.querySelector('#titre');
+        inputTitle.addEventListener('change', (event) => {
+            const nbr = event.target.value.length
+            if (nbr > 5) {
+                const inpuCat = document.querySelector("#Categorie")
+                inpuCat.addEventListener('change', (e) => {
+                    const nbrCat = e.target.value.length
+                    if (nbrCat != null) {
+                        const btnValider = document.querySelector('.btn-valider')
+                        btnValider.style.backgroundColor = "#1D6154"
+                    } else {
+                        alert("Renseignez la caregorie s'il vous plaît")
+                    }
+                })
+            } else {
+                alert("le text entré est invalide")
+            }
+        });
+    }
+})
+
+
 //Genération des travaux dans la modale
 function genererGallerieModal(works){
 
