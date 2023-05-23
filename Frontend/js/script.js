@@ -90,9 +90,9 @@ if(dataExist){
     const logout = document.querySelector('#login')
     logout.innerText = "logout";
     logout.addEventListener("click", function(){
-        window.sessionStorage.removeItem("data");
         window.sessionStorage.removeItem('token')
-        window.location = "./login.html"
+        logout.removeAttribute('href')
+        logout.setAttribute('href', '/index.html')
     })
 }
 
@@ -102,6 +102,10 @@ const ouvrirModale = function(e){
     const modalStyle = document.querySelector('#modal1')
     modalStyle.classList.add('modal')
     modalStyle.addEventListener('click', closeMoadal)
+    const principalModal = document.querySelector('#myModal')
+    principalModal.classList.remove('hidden')
+    const modalAddStyle = document.querySelector('#modalphoto')
+    modalAddStyle.classList.add('hidden')
 }
 document.querySelectorAll('.js_modal').forEach(a =>{
     a.addEventListener('click', ouvrirModale)
