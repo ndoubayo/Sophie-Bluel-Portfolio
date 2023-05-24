@@ -1,10 +1,7 @@
-const hiddenBaner =document.querySelector("#baniere");
-
 const emailInputRef =document.querySelector("#email");
 const passwordInputRef = document.querySelector("#password");
 const firstIdentifier = "sophie.bluel@test.tld";
 const lastIdentifier = "S0phie";
-
 
 const enteredEmail =emailInputRef.value;
 const enteredPassword = passwordInputRef.value;

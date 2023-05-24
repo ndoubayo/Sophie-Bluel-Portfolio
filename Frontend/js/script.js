@@ -1,12 +1,11 @@
 // Récuperation de l'Url des travaux
-
 const urlTravaux = await fetch("http://localhost:5678/api/works");
 const works = await urlTravaux.json();
 
 // Création des elements du DOM et ajout des travaux à la galerie
 function generationTravaux(works){
 
- for (let i = 0; i < works.length; i++){
+ for (let i in works){
     const travaux = works[i];
     // Les elements qui accueilleront les travaux
     const galerie = document.querySelector(".gallery");
@@ -86,7 +85,6 @@ if(dataExist){
     hiddenBtn.classList.remove('btncontainer');
     hiddenBtn.classList.add("hidden")
      
-
     const logout = document.querySelector('#login')
     logout.innerText = "logout";
     logout.addEventListener("click", function(){
@@ -119,7 +117,6 @@ const closeMoadal = function(e){
 document.querySelectorAll('.close').forEach(button => {
     button.addEventListener('click', closeMoadal)
 })
-
 
 const stope = document.querySelector('#myModal')
 stope.addEventListener('click', function(e){
@@ -154,7 +151,6 @@ const stopAtAddphoto = document.querySelector('#modalphoto')
 stopAtAddphoto.addEventListener('click', function(e){
     e.stopPropagation()
 })
-
 
 const formToSubmit = document.querySelector('#form-to-submit')
 let titleToAdd = document.querySelector('#titre').value
@@ -201,10 +197,6 @@ btnAddPhoto.addEventListener('click', function(e){
         document.querySelector(".btn-valider").style.backgroundColor = "green";
     }
 })
-console.log(titleToAdd)
-console.log(categoryToAdd)
-console.log(inputFile.value)
-
 inputFile.addEventListener("change", (e) => {
     const nbrfile = e.target.value.length
     if (nbrfile > 5) {
@@ -226,6 +218,8 @@ inputFile.addEventListener("change", (e) => {
                 alert("le text entré est invalide")
             }
         });
+    }else{
+        alert("Choisissez un fichier s'il vous plait")
     }
 })
 
@@ -233,7 +227,7 @@ inputFile.addEventListener("change", (e) => {
 //Genération des travaux dans la modale
 function genererGallerieModal(works){
 
-    for (let i = 0; i < works.length; i++){
+    for (let i in works){
        const travaux = works[i];
        // Les elements qui accueilleront les travaux
        const galerieModal = document.querySelector(".gallery-modal");
@@ -288,8 +282,7 @@ galerieModal.addEventListener('click', function(e){
         })
     }
 })
-/*const getTokent = window.localStorage.getItem('token')
-console.log(getTokent)*/
+
 
 
 
