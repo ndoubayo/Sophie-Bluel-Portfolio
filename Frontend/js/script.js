@@ -16,7 +16,6 @@ function generationTravaux(works){
     imageElement.alt = travaux.title;
     const titleElement = document.createElement("figcaption");
     titleElement.innerText =travaux.title;
-
     //Rattachemment
     figure.appendChild(imageElement);
     figure.appendChild(titleElement)
@@ -24,7 +23,6 @@ function generationTravaux(works){
     galerie.appendChild(figure)
  }
 }
-
 generationTravaux(works);
 
 //Création de boutons de filtrages
@@ -63,7 +61,6 @@ btnHotelRestaurant.addEventListener("click", function(){
     document.querySelector(".gallery").innerHTML = "";
     generationTravaux(hotelRestaurants)
 })
-
 //Gestion des donnés de login
 
 const  dataExist = window.sessionStorage.getItem("token");
@@ -189,23 +186,17 @@ formToSubmit.addEventListener('submit', async function (e) {
 })
 
 const btnAddPhoto = document.querySelector("#btn-ajout-photo")
-btnAddPhoto.addEventListener('click', function(e){
-    const imageAdd = document.querySelector('#project-pic')
-    imageAdd.classList.remove("hidden")
-
-    if(titleToAdd.trim() != ""){
-        document.querySelector(".btn-valider").style.backgroundColor = "green";
-    }
-})
-inputFile.addEventListener("change", (e) => {
+inputFile.addEventListener("input", (e) => {
     const nbrfile = e.target.value.length
     if (nbrfile > 5) {
+        const imageAdd = document.querySelector('#project-pic')
+        imageAdd.classList.remove("hidden")
         const inputTitle = document.querySelector('#titre');
         inputTitle.addEventListener('change', (event) => {
             const nbr = event.target.value.length
             if (nbr > 5) {
                 const inpuCat = document.querySelector("#Categorie")
-                inpuCat.addEventListener('change', (e) => {
+                inpuCat.addEventListener('input', (e) => {
                     const nbrCat = e.target.value.length
                     if (nbrCat != null) {
                         const btnValider = document.querySelector('.btn-valider')
@@ -222,7 +213,6 @@ inputFile.addEventListener("change", (e) => {
         alert("Choisissez un fichier s'il vous plait")
     }
 })
-
 
 //Genération des travaux dans la modale
 function genererGallerieModal(works){
@@ -249,8 +239,7 @@ function genererGallerieModal(works){
 
        galerieModal.appendChild(figure)
     }
-}
-   
+}  
 genererGallerieModal(works);
 
 // Suppression d'une image de la galerie modale et de la base de données
