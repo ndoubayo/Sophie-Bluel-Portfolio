@@ -181,7 +181,7 @@ formToSubmit.addEventListener('submit', async function (e) {
         headers: { 'Authorization': `Bearer ${getTokent}` },
         body: formData
     }).then((res) => res.json())
-    .catch((error) => alert("Erreur lors de l\envoi du formulaire" + error))
+    // .catch((error) => alert("Erreur lors de l\envoi du formulaire" + error))
 
 })
 
